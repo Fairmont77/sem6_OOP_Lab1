@@ -1,10 +1,10 @@
-import db.AppointmentDao;
+import db.ReservationDao;
 import db.GeneralDB;
-import db.PatientDao;
-import db.StaffDao;
-import entities.Appointment;
-import entities.Patient;
-import entities.Staff;
+import db.PatronDao;
+import db.LibrarianDao;
+import entities.Reservation;
+import entities.Patron;
+import entities.Librarian;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,18 +14,21 @@ public class Main {
 
         GeneralDB db = new GeneralDB();
         Statement statement = db.setConnection();
-        Patient patient = new Patient(1324, "Petrenko", "Petro", "Petrovych", "M", "1992-11-11", "+3809546221", "mypassword033");
-        PatientDao patientDao = new PatientDao(statement.getConnection());
-        //patientDao.delete(12);
-        //patientDao.add(patient);
-        Staff staff = new Staff(3283, "Ivanova2", "Ivanna", "Ivanivna", "nurse", "+380972653421", "ghgh6dddgg");
-        StaffDao staffDao = new StaffDao(statement.getConnection());
-        // staffDao.update(3283, staff);
-        //System.out.println(patientDao.getNameById(1324));
-        Appointment appointment = new Appointment("2024-01-01", 3213, 1324, "diagnosis", "medication", null, "surgery");
-        AppointmentDao appointmentDao = new AppointmentDao(statement.getConnection());
-        //appointmentDao.add(appointment);
-        //staffDao.fulfillPrescription(statement.getConnection(), 8, 3283);
+
+        Patron patron = new Patron(1324, "Slava", "Gora", "Petrovych", "M", "1912-11-11", "+123424312", "Aoa");
+        PatronDao patronDao = new PatronDao(statement.getConnection());
+        // patronDao.delete(12);
+        // patronDao.add(patron);
+
+        Librarian librarian = new Librarian(3283, "Name1", "Name2", "Name3", "1", "ksjngfskgn@mail.com", "qwerty123");
+        LibrarianDao librarianDao = new LibrarianDao(statement.getConnection());
+        // librarianDao.update(3283, librarian);
+        // System.out.println(patronDao.getNameById(1324));
+
+        Reservation reservation = new Reservation("2024-06-06", 3213, 1324, "Book Title", "Reservation Details", true);
+        ReservationDao reservationDao = new ReservationDao(statement.getConnection());
+        // reservationDao.add(reservation);
+        // reservationDao.updateStatus(8, true);
 
     }
 }
